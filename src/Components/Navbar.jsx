@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Button,
@@ -13,10 +13,17 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import {  HamburgerIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Authcontext } from "../Context/AuthContext";
+
+
 const NavbarSignUp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+
+  const value = useContext(Authcontext)
+  console.log(value)
+ 
   return (
     <Box>
       <Flex
@@ -61,7 +68,7 @@ const NavbarSignUp = () => {
             </Text>
           </Link>
 
-          <Link to={"/signup"}>
+          <NavLink to={"/signup"}>
             <Text
               _hover={{
                 color: "#ff6733",
@@ -71,7 +78,7 @@ const NavbarSignUp = () => {
             >
               Sign Up
             </Text>
-          </Link>
+          </NavLink>
 
           <Link to={"/login"}>
             <Text
@@ -85,7 +92,7 @@ const NavbarSignUp = () => {
             </Text>
           </Link>
 
-          <Link>
+          <Link to={"/add"} >
             <Text
               _hover={{
                 color: "#ff6733",
@@ -93,7 +100,7 @@ const NavbarSignUp = () => {
               fontSize={"1.2rem"}
               fontWeight={"semibold"}
             >
-              Forums
+              Add Note
             </Text>
           </Link>
 
