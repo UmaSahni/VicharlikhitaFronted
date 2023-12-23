@@ -8,18 +8,22 @@ const AddNote = () => {
   return (
     <div>
       <Flex 
+      bg={"#1f3343"}
+      height={"100vh"}
        flexDirection={{
         base: 'column', // default value for small screens
         md: 'column', // value for medium screens
         lg: 'row', // value for large screens
       }}
-      border={"1px"}>
+      >
         <Box minWidth={"35%"} >
           <Add />
         </Box>
 
-        <Box>
-        <PreviousNote />
+        <Box width={"100%"}  >
+          <Box display={"flex"} justifyContent={"center"} >
+          <PreviousNote />
+          </Box>
         </Box>
         
       </Flex>

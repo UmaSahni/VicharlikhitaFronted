@@ -30,8 +30,8 @@ const NavbarSignUp = () => {
         w="100%"
         align="center"
         justify="space-between"
-        border={"1px solid #262a3b"}
-        bgColor={"#262a3b"}
+        border={"1px solid #1f2a37"}
+        bgColor={"#1f2a37"}
         color={"rgb(235, 235, 235)"}
       >
         <Link to={"/"}>

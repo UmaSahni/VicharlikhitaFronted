@@ -104,12 +104,15 @@ const NoteForm = () => {
   };
 
   return (
-    <Box borderRight={"1px solid"}>
+    <Box  color={"white"} borderRight={"1px solid"}>
       <Toaster/>
       <Box m={5}>
         <FormControl mb={4}>
-          <FormLabel>Title</FormLabel>
+          <FormLabel >Title</FormLabel>
           <Input
+          color={" #ffcc00"}
+          fontWeight={"bold"}
+          fontSize={"lg"}
             type="text"
             placeholder="Enter title"
             value={title}
@@ -120,6 +123,7 @@ const NoteForm = () => {
         <FormControl mb={4}>
           <FormLabel>Description</FormLabel>
           <Textarea
+           color={" #ffcc00"}
             placeholder="Enter description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -140,6 +144,7 @@ const NoteForm = () => {
             <form  onSubmit={handleTag}>
               <Box display={"flex"} >
               <Input
+              color={" #ffcc00"}
                 value={myTag}
                 onChange={(e) => setMyTags(e.target.value)}
               />

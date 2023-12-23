@@ -1,3 +1,14 @@
+
+Colors : 
+1. Orange : #ff5733
+2. Green :  #33431f , #1f4233
+3. Gray green blue : #40556076
+4. gray color : #c0c0c0
+5. yello : #ffcc00
+6. red :  #ff3333
+
+
+
 fetch
 
 fetch(url, {
@@ -22,5 +33,5 @@ fetch(`${baseUrl}/notes/add`, {
   .then((res) => res.json())
   .then((data) => console.log(data))
   .catch((err) => console.log(err));
-  
+
 ```
