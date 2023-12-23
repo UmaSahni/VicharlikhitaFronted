@@ -1,15 +1,21 @@
 import { Flex, Spacer , Box} from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import Add from "../Components/Add";
 import PreviousNote from "../Components/PreviousNote";
 
 
 const AddNote = () => {
+const [getallNoteState, setGetAllNotesState] = useState(false)
+
+  const handleStateFromChild = () =>{
+    setGetAllNotesState(!getallNoteState)
+  }
+
   return (
     <div>
       <Flex 
       bg={"#1f3343"}
-      height={"100vh"}
+      minHeight={"100vh"}
        flexDirection={{
         base: 'column', // default value for small screens
         md: 'column', // value for medium screens
@@ -17,12 +23,12 @@ const AddNote = () => {
       }}
       >
         <Box minWidth={"35%"} >
-          <Add />
+          <Add handleStateFromChild={handleStateFromChild } />
         </Box>
 
         <Box width={"100%"}  >
           <Box display={"flex"} justifyContent={"center"} >
-          <PreviousNote />
+          <PreviousNote  getallNoteState={getallNoteState} />
           </Box>
         </Box>
         

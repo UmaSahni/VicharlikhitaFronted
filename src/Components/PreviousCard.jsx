@@ -3,8 +3,10 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { baseUrl } from '../Urls';
 import { Authcontext } from '../Context/AuthContext';
+import { ImBin2 } from "react-icons/im";
+import { FaEdit } from "react-icons/fa";
 
-const PreviousCard = ({ title, isPrivate, tags, description , _id}) => {
+const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildData}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedDescription, setEditedDescription] = useState(description || "");
@@ -18,7 +20,7 @@ const PreviousCard = ({ title, isPrivate, tags, description , _id}) => {
   };
 
   const handleSaveClick = () => {
-    console.log({editedTitle, editedDescription, editedTags, editedIsPrivate, })
+    // console.log({editedTitle, editedDescription, editedTags, editedIsPrivate, })
     const data = {
       title:editedTitle,
       description: editedDescription,
@@ -40,6 +42,21 @@ const PreviousCard = ({ title, isPrivate, tags, description , _id}) => {
     // For simplicity, I'm just toggling back to non-edit mode here
     setIsEditing(false);
   };
+
+  const handleDelete = () =>{
+    axios({
+      method:"Delete",
+      url: `${baseUrl}/notes/delete/${_id}`,
+      headers :{
+        "Content-Type" : "application/json",
+        Authorization : `Bearer ${token}`
+      },
+    }).then((res)=>{
+      console.log(res)
+    handleChildData(res)
+    }).catch((err)=>console.log(err))
+    
+  }
 
   return (
     <div>
@@ -92,9 +109,20 @@ const PreviousCard = ({ title, isPrivate, tags, description , _id}) => {
               <Switch isChecked={editedIsPrivate} mr={2} isDisabled />
               <Text>Private</Text>
             </Flex>
-            <Button colorScheme="blue" onClick={handleEditClick} m={2}>
-              Edit
-            </Button>
+        <Flex justifyContent={"space-between"} >
+          {/* <---- Edit Button ----> */}
+          <Box  _hover={{color:"#ff5733"}}  color='#ffff' >
+              <FaEdit size={20} onClick={handleEditClick}  />
+          </Box>
+         
+          
+          {/* <---- Delete Button ----> */}
+          <Box  _hover={{color:"#ff5733"}}  color='#ffff' >
+               <ImBin2  color='#ffff' size={20} onClick={handleDelete} />
+          </Box>
+        
+        </Flex>
+             
           </>
         )}
       </Box>
