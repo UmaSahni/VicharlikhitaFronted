@@ -1,10 +1,11 @@
 
 import AllRoutes from "./Components/AllRoutes";
 import Navbar from "./Components/Navbar";
+import "./index.css"
 
 function App() {
   return (
-    <div>
+    <div  >
       <Navbar />
       <AllRoutes />
     </div>

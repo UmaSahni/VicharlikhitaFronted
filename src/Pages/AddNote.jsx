@@ -15,7 +15,7 @@ const [getallNoteState, setGetAllNotesState] = useState(false)
     <div>
       <Flex 
       bg={"#1f3343"}
-      minHeight={"100vh"}
+     
        flexDirection={{
         base: 'column', // default value for small screens
         md: 'column', // value for medium screens

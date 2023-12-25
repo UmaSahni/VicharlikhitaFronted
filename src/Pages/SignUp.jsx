@@ -55,7 +55,8 @@ const handleChange = (e)=>{
   };
 
   return (
-    <Box mt={3} p={8} maxWidth="400px" borderWidth={1} borderRadius={8} boxShadow="lg" mx="auto">
+   
+    <Box  p={8} mt={10} bg={"brand.BoxBase"} maxWidth="400px" borderWidth={1} borderRadius={8} boxShadow="lg" mx="auto">
       <Toaster/>
       <Heading as="h2" size="xl" textAlign="center" mb={6}>
         Sign Up
@@ -76,16 +77,17 @@ const handleChange = (e)=>{
       <FormLabel>Password</FormLabel>
         <InputGroup>
           <Input onChange={handleChange} value={state.pass} name='pass' type={show ? "text" : "password"} placeholder="Enter your password" focusBorderColor="teal.400" />
-          <InputRightElement width={"4rem"}   >  <Button  variant='outline' onClick={()=>setShow(!show)} >{show ? "Hide" : "Show"}</Button> </InputRightElement>
+          <InputRightElement bg={"white"} borderRightRadius={"10"} width={"4rem"}   >  <Button   onClick={()=>setShow(!show)} >{show ? "Hide" : "Show"}</Button> </InputRightElement>
         </InputGroup>
         </FormControl>
 
-          <Button type="submit" colorScheme="teal" size="lg" fontSize="md">
+          <Button type="submit" className='button-50' size="lg" fontSize="md">
             Sign Up
           </Button>
         </Stack>
       </form>
     </Box>
+   
   );
 };
 

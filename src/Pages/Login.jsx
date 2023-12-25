@@ -6,11 +6,11 @@ import { baseUrl } from '../Urls';
 import toast, { Toaster } from 'react-hot-toast';
 import { Authcontext } from '../Context/AuthContext';
 
+
 const LoginForm = () => {
   const [state, setState] = useState({email: "", pass:""})
   const [show, setShow] = useState(true)
-
-
+ 
  const {setIsAuth, Isauth, token, setToken} = useContext(Authcontext)
       
 
@@ -56,6 +56,7 @@ const LoginForm = () => {
       borderWidth={1}
       borderRadius="md"
       boxShadow="lg"
+     bg={"brand.BoxBase"}
     >
       <Toaster/>
       <Heading mb={4} textAlign="center">Login</Heading>
@@ -70,12 +71,12 @@ const LoginForm = () => {
       <FormLabel>Password</FormLabel>
         <InputGroup>
           <Input isRequired onChange={handleChange} value={state.pass} name='pass' type={show ? "text" : "password"} placeholder="Enter your password" focusBorderColor="teal.400" />
-          <InputRightElement width={"4rem"}  >  <Button  variant='outline' onClick={()=>setShow(!show)} >{show ? "Hide" : "Show"}</Button> </InputRightElement>
+          <InputRightElement width={"4rem"} bg={"white"} borderRightRadius={"10"}  >  <Button   onClick={()=>setShow(!show)} >{show ? "Hide" : "Show"}</Button> </InputRightElement>
         </InputGroup>
         </FormControl>
 
 
-        <Button isDisabled={Isauth ? true : false}  type="submit" colorScheme="teal" size="lg" mt={4} w="100%">
+        <Button className='button-50' isDisabled={Isauth ? true : false}  type="submit"  size="lg" mt={4} w="100%">
           {Isauth ? "You are already signed in" :  "Sign In" }
           
         </Button>

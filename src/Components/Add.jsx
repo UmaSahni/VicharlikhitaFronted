@@ -111,23 +111,27 @@ const NoteForm = ({ handleStateFromChild }) => {
       <Toaster />
       <Box m={5}>
        <Heading textAlign={"center"} >Create Note</Heading>
-          <FormControl mb={4}>
-            <FormLabel>Title</FormLabel>
+          <FormControl isRequired  mb={4}>
+            <FormLabel >Title</FormLabel>
+            
             <Input
-              isRequired
+              
               color={" #ffcc00"}
               fontWeight={"bold"}
               fontSize={"lg"}
+              name="title"
               type="text"
               placeholder="Enter title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
+            
           </FormControl>
 
           <FormControl mb={4}>
             <FormLabel>Description</FormLabel>
             <Textarea
+            focusBorderColor="teal.500"
               color={" #ffcc00"}
               placeholder="Enter description"
               value={description}
@@ -171,10 +175,13 @@ const NoteForm = ({ handleStateFromChild }) => {
           </FormControl>
 
           <Button
+         className="button-50"
           width={"full"}
             onClick={handleSubmit}
             isDisabled={loading || error ? true : false}
-            colorScheme="teal"
+            // colorScheme="teal"
+            bgColor={"#1f2a37"}
+            color={"white"}
           >
             {loading ? "Saving..." : error ? "An Error Occured" : "save"}
           </Button>
