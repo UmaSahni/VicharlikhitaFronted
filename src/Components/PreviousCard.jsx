@@ -6,6 +6,7 @@ import { Authcontext } from '../Context/AuthContext';
 import { ImBin2 } from "react-icons/im";
 import { FaEdit } from "react-icons/fa";
 import "../App.css"
+import {Droppable} from "react-beautiful-dnd"
 
 const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildData}) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -100,6 +101,10 @@ const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildDa
           </>
         ) : (
           <>
+
+         
+
+
             <Heading color={"  #c0c0c0"}>{editedTitle}</Heading>
             <Text mt={2} mb={2} >{editedDescription}</Text>
             {editedTags.map((tag, i) => (
