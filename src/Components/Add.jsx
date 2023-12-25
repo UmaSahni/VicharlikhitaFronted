@@ -14,9 +14,12 @@ import {
   TagCloseButton,
   Flex,
   Switch,
+  Heading,
 } from "@chakra-ui/react";
 import { baseUrl } from "../Urls";
 import { Authcontext } from "../Context/AuthContext";
+import { FaPlus } from "react-icons/fa";
+import "../App.css"
 
 const NoteForm = ({ handleStateFromChild }) => {
   const [title, setTitle] = useState("");
@@ -36,8 +39,8 @@ const NoteForm = ({ handleStateFromChild }) => {
   };
 
   // Add Note in DB
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault()
 
     const noteData = {
       title,
@@ -94,6 +97,7 @@ const NoteForm = ({ handleStateFromChild }) => {
   // add tag in tags array
   const handleTag = (event) => {
     event.preventDefault();
+
     if (!tags.includes(myTag)) {
       setTags([...tags, myTag]);
 
@@ -103,10 +107,10 @@ const NoteForm = ({ handleStateFromChild }) => {
   };
 
   return (
-    <Box color={"white"} borderRight={"1px solid"}>
+    <Box borderRadius={"10px"} minH={"85vh"} m={4}  p={4} color={"white"} bgColor={"#1f2a37aa"} >
       <Toaster />
       <Box m={5}>
-        <form onSubmit={handleSubmit}>
+       <Heading textAlign={"center"} >Create Note</Heading>
           <FormControl mb={4}>
             <FormLabel>Title</FormLabel>
             <Input
@@ -142,14 +146,14 @@ const NoteForm = ({ handleStateFromChild }) => {
 
           <FormControl mb={4}>
             <FormLabel>Tags</FormLabel>
-            <form onSubmit={handleTag}>
-              <Box display={"flex"}>
+           <form onSubmit={handleTag} >
+              <Box gap={2} display={"flex"}>
                 <Input
                   color={" #ffcc00"}
                   value={myTag}
                   onChange={(e) => setMyTags(e.target.value)}
                 />
-                <Button type="submit">Add</Button>
+                <Button type="submit"  ><FaPlus /></Button>
               </Box>
             </form>
           </FormControl>
@@ -167,13 +171,14 @@ const NoteForm = ({ handleStateFromChild }) => {
           </FormControl>
 
           <Button
-            type="submit"
+          width={"full"}
+            onClick={handleSubmit}
             isDisabled={loading || error ? true : false}
             colorScheme="teal"
           >
             {loading ? "Saving..." : error ? "An Error Occured" : "save"}
           </Button>
-        </form>
+      
       </Box>
     </Box>
   );

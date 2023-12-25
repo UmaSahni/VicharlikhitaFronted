@@ -5,6 +5,7 @@ import { baseUrl } from '../Urls';
 import { Authcontext } from '../Context/AuthContext';
 import { ImBin2 } from "react-icons/im";
 import { FaEdit } from "react-icons/fa";
+import "../App.css"
 
 const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildData}) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -59,8 +60,8 @@ const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildDa
   }
 
   return (
-    <div>
-      <Box bgColor={"#40556076"} m={4} p={4} boxShadow={"md"} width={400}>
+    <div  >
+      <Box className="button-85"  m={4} p={4} boxShadow={"md"} width={400}>
         {isEditing ? (
           <>
             <Input
@@ -91,6 +92,7 @@ const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildDa
                 mr={2}
               />
               <Text>Private</Text>
+            
             </Flex>
             <Button colorScheme="teal" onClick={handleSaveClick} m={2}>
               Save
@@ -99,15 +101,15 @@ const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildDa
         ) : (
           <>
             <Heading color={"  #c0c0c0"}>{editedTitle}</Heading>
-            <Text>{editedDescription}</Text>
+            <Text mt={2} mb={2} >{editedDescription}</Text>
             {editedTags.map((tag, i) => (
               <Badge m={2} key={i}>
                 {tag}
               </Badge>
             ))}
             <Flex alignItems="center" mb={2}>
-              <Switch isChecked={editedIsPrivate} mr={2} isDisabled />
-              <Text>Private</Text>
+              
+              <Text> {isPrivate && "Private"} </Text>
             </Flex>
         <Flex justifyContent={"space-between"} >
           {/* <---- Edit Button ----> */}

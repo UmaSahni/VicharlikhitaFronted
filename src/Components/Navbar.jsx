@@ -25,8 +25,9 @@ const NavbarSignUp = () => {
   console.log(value)
  
   return (
-    <Box>
+    <Box    >
       <Flex
+      
         w="100%"
         align="center"
         justify="space-between"
