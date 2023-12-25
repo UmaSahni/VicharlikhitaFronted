@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { baseUrl } from "../Urls";
 import { Authcontext } from "../Context/AuthContext";
 import PreviousCard from "./PreviousCard";
-import { GridItem, SimpleGrid, Box } from "@chakra-ui/react";
+import { GridItem, SimpleGrid, Box, Flex } from "@chakra-ui/react";
 
 const PreviousNote = ({getallNoteState}) => {
   const [notes, setNotes] = useState([]);
@@ -37,11 +37,13 @@ const PreviousNote = ({getallNoteState}) => {
 
   return (
     <div>
-      <SimpleGrid columns={[1, 1, 2]} spacing={10}>
+      {/* <SimpleGrid columns={[1, 1, 2]} spacing={10}> */}
+      <Flex gap={3} justifyContent={"center"} w={"100%"} flexWrap={"wrap"} >
         {notes?.map((el) => (
           <PreviousCard {...el} key={el._id} handleChildData={handleChildData} />
         ))}
-      </SimpleGrid>
+        </Flex>
+      {/* </SimpleGrid> */}
     </div>
   );
 };
