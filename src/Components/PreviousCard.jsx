@@ -1,4 +1,4 @@
-import { Badge, Box, Heading, Text, Button, Input, Switch, Flex, Textarea } from '@chakra-ui/react';
+import { Badge, Box, Heading, Text, Button, Input, Switch, Flex, Textarea, Image } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { baseUrl } from '../Urls';
@@ -8,12 +8,14 @@ import { FaEdit } from "react-icons/fa";
 import "../App.css"
 import {Droppable} from "react-beautiful-dnd"
 
-const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildData}) => {
+const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildData, imageUrl }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedDescription, setEditedDescription] = useState(description || "");
   const [editedTags, setEditedTags] = useState(tags || []);
   const [editedIsPrivate, setEditedIsPrivate] = useState(isPrivate);
+
+  console.log(imageUrl)
 
   const {token} = useContext(Authcontext)
 
@@ -112,11 +114,13 @@ const PreviousCard = ({ title, isPrivate, tags, description , _id, handleChildDa
                 {tag}
               </Badge>
             ))}
-            <Flex alignItems="center" mb={2}>
-              
-              <Text> {isPrivate && "Private"} </Text>
-            </Flex>
-        <Flex justifyContent={"space-between"} >
+           
+       <Image src={`${baseUrl}/${imageUrl}`} margin={"auto"} maxH={"20vh"} maxW={"20vw"} />
+      
+      <Flex alignItems="center" mb={2}> <Text> {isPrivate && "Private"} </Text> </Flex>
+
+      <Flex justifyContent={"space-between"} >
+          
           {/* <---- Edit Button ----> */}
           <Box  _hover={{color:"#ff5733"}}  color='#ffff' >
               <FaEdit size={20} onClick={handleEditClick}  />

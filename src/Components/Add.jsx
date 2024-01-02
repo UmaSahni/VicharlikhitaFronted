@@ -107,6 +107,7 @@ const NoteForm = ({ handleStateFromChild }) => {
     setTitle("");
     setDescription("");
     setIsPrivate(false);
+    setImageFile(null)
   };
 
   // add tag in tags array
@@ -143,16 +144,7 @@ const NoteForm = ({ handleStateFromChild }) => {
             
           </FormControl>
 
-          <FormControl mb={4}>
-            <FormLabel>Image</FormLabel>
-              <Input
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
-          </FormControl>
-
+          
           <FormControl mb={4}>
             <FormLabel>Description</FormLabel>
             <Textarea
@@ -186,6 +178,18 @@ const NoteForm = ({ handleStateFromChild }) => {
               </Box>
             </form>
           </FormControl>
+          
+          <FormControl mb={4}>
+            <FormLabel>Image</FormLabel>
+              <Input
+                variant='flushed'
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+          </FormControl>
+
 
           <FormControl display="flex" alignItems="center" mb={4}>
             <FormLabel htmlFor="private-switch" mb="0">

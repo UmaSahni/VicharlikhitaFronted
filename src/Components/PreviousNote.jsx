@@ -45,19 +45,8 @@ const PreviousNote = ({getallNoteState}) => {
 
   const onDragEnd = (result) =>{
     if(!result.destination) return
-
     const reoderedItems = reoder(notes, result.source.index, result.destination.index)
-     
-    console.log(reoderedItems)
     setNotes(reoderedItems)
-
-   
-
-
-
-
-
-
   }
  
   return (
