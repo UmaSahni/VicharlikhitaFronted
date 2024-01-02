@@ -1,8 +1,11 @@
 import React from 'react'
+import UploadImage from '../Components/UploadImage'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <UploadImage/>
+    </div>
   )
 }
 

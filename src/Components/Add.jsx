@@ -29,8 +29,17 @@ const NoteForm = ({ handleStateFromChild }) => {
   const [myTag, setMyTags] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const { token , userID } = useContext(Authcontext);
 
-  const { token } = useContext(Authcontext);
+ 
+
+   
+    // Handle image file change
+    const handleImageChange = (event) => {
+      const file = event.target.files[0];
+      setImageFile(file);
+    };
 
   // x -> button to delete a perticular tag
   const handleRemoveTag = (tag) => {
@@ -42,12 +51,18 @@ const NoteForm = ({ handleStateFromChild }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    const noteData = {
-      title,
-      description,
-      tags,
-      isPrivate,
-    };
+    console.log(imageFile)
+
+   const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("tags", JSON.stringify(tags));
+    formData.append("isPrivate", isPrivate);
+     // Check if an image file is selected
+    if (imageFile) {
+      formData.append("image", imageFile, imageFile.name);
+    }
+    formData.append("userId", userID )
 
     setLoading(true);
 
@@ -64,10 +79,10 @@ const NoteForm = ({ handleStateFromChild }) => {
       method: "POST",
       url: `${baseUrl}/notes/add`,
       headers: {
-        "Content-Type": "application/json",
+         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       },
-      data: JSON.stringify(noteData),
+      data:  formData,
     })
       .then((res) => {
         console.log(res);
@@ -87,7 +102,7 @@ const NoteForm = ({ handleStateFromChild }) => {
         console.log(err, error);
       });
 
-    console.log("Submitted Note:", noteData);
+    console.log("Submitted Note:", formData);
     setTags([]);
     setTitle("");
     setDescription("");
@@ -126,6 +141,16 @@ const NoteForm = ({ handleStateFromChild }) => {
               onChange={(e) => setTitle(e.target.value)}
             />
             
+          </FormControl>
+
+          <FormControl mb={4}>
+            <FormLabel>Image</FormLabel>
+              <Input
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
           </FormControl>
 
           <FormControl mb={4}>
@@ -173,6 +198,7 @@ const NoteForm = ({ handleStateFromChild }) => {
               ml={2}
             />
           </FormControl>
+
 
           <Button
          className="button-50"

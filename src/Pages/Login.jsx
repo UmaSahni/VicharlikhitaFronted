@@ -11,7 +11,7 @@ const LoginForm = () => {
   const [state, setState] = useState({email: "", pass:""})
   const [show, setShow] = useState(true)
  
- const {setIsAuth, Isauth, token, setToken} = useContext(Authcontext)
+ const {setIsAuth, Isauth, token, setToken, userID, setUserId} = useContext(Authcontext)
       
 
   const handleChange = (e) =>{
@@ -30,6 +30,7 @@ const LoginForm = () => {
       else if (res.data.message == "Login successful") {
       toast.dismiss()
       setToken(res.data.token)
+      setUserId(res.data.userId)
      setIsAuth(true)
       console.log(res.data)
      
