@@ -35,3 +35,6 @@ fetch(`${baseUrl}/notes/add`, {
   .catch((err) => console.log(err));
 
 ```
+
+
+Get Public Images : 

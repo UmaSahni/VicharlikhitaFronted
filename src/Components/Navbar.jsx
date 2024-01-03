@@ -37,7 +37,7 @@ const NavbarSignUp = () => {
       >
         <Link to={"/"}>
           <Box p={4} fontWeight="bold" fontSize="xl">
-            <Text>Note Taking 📝</Text>
+            <Text> विचार लिखिता 📝</Text>
           </Box>
         </Link>
         <Box marginRight={"1%"}>

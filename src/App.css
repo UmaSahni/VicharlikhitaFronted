@@ -76,8 +76,18 @@
   background: #1f2a37;
   left: 0;
   top: 0;
-  border-radius: 10px;
+  border-radius: 4px;
 }
+
+
+.border-gradient {
+  border: 10px solid;
+  border-image-slice: 3;
+  border-width: 10px;
+  box-shadow: rgb(63 131 248 / .5) 0px 44px 48px 0px, rgba(248, 63, 236, 0.5) 10px 0px 28px 0px;
+ 
+}
+
 
 
 
