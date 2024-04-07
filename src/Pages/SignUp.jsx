@@ -51,7 +51,7 @@ const handleChange = (e)=>{
       console.log(err)
       toast.error(err.response ? err.response.data.message : 'An error occurred')
     })
-    console.log('Sign-up form submitted!');
+    // console.log('Sign-up form submitted!');
   };
 
   return (

@@ -27,7 +27,6 @@ const NavbarSignUp = () => {
   return (
     <Box    >
       <Flex
-      
         w="100%"
         align="center"
         justify="space-between"
@@ -105,7 +104,7 @@ const NavbarSignUp = () => {
             </Text>
           </Link>
 
-          <Link>
+          <Link to={"/about"} >
             <Text
               _hover={{
                 color: "#ff6733",
@@ -116,109 +115,84 @@ const NavbarSignUp = () => {
               About
             </Text>
           </Link>
-          <Link to={"/login"}>
-            <Button
-              _hover={{
-                color: "#ff6733",
-              }}
-              variant={"link"}
-              color={"rgb(235, 235, 235)"}
-            >
-              <Text
-                _hover={{
-                  color: "#ff6733",
-                }}
-                fontSize={"1.2rem"}
-                fontWeight={"semibold"}
-              >
-                {" "}
-                Log In
-              </Text>
-            </Button>
-          </Link>
+
         </HStack>
       </Flex>
       {isOpen && (
+        
         <Drawer
           isOpen={isOpen}
           placement="top"
           onClose={onClose}
           finalFocusRef={btnRef}
         >
-          <DrawerContent>
+          <DrawerContent
+          border={"1px solid #1f2a37"}
+          bgColor={"#1f2a37"}
+          color={"rgb(235, 235, 235)"}
+          >
             <DrawerCloseButton />
-            <VStack m={8} align={"stretch"} spacing={10}>
-              <Link>
-                <Text
-                  _hover={{
-                    color: "#ff6733",
-                  }}
-                  fontSize={"1.2rem"}
-                  fontWeight={"semibold"}
-                >
-                  Products
-                </Text>
-              </Link>
+            <VStack  m={8} align={"stretch"} spacing={10}>
+               <Link to={"/"} >
+            <Text
+              _hover={{
+                color: "#ff6733",
+              }}
+              fontSize={"1.2rem"}
+              fontWeight={"semibold"}
+            >
+              Home
+            </Text>
+          </Link>
 
-              <Link>
-                <Text
-                  _hover={{
-                    color: "#ff6733",
-                  }}
-                  fontSize={"1.2rem"}
-                  fontWeight={"semibold"}
-                >
-                  Support
-                </Text>
-              </Link>
+          <NavLink to={"/signup"}>
+            <Text
+              _hover={{
+                color: "#ff6733",
+              }}
+              fontSize={"1.2rem"}
+              fontWeight={"semibold"}
+            >
+              Sign Up
+            </Text>
+          </NavLink>
 
-              <Link>
-                <Text
-                  _hover={{
-                    color: "#ff6733",
-                  }}
-                  fontSize={"1.2rem"}
-                  fontWeight={"semibold"}
-                >
-                  Blog
-                </Text>
-              </Link>
+          <Link to={"/login"}>
+            <Text
+              _hover={{
+                color: "#ff6733",
+              }}
+              fontSize={"1.2rem"}
+              fontWeight={"semibold"}
+            >
+              Log In
+            </Text>
+          </Link>
 
-              <Link>
-                <Text
-                  _hover={{
-                    color: "#ff6733",
-                  }}
-                  fontSize={"1.2rem"}
-                  fontWeight={"semibold"}
-                >
-                  Forums
-                </Text>
-              </Link>
+          <Link to={"/add"} >
+            <Text
+              _hover={{
+                color: "#ff6733",
+              }}
+              fontSize={"1.2rem"}
+              fontWeight={"semibold"}
+            >
+              Add Note
+            </Text>
+          </Link>
 
-              <Link>
-                <Text
-                  _hover={{
-                    color: "#ff6733",
-                  }}
-                  fontSize={"1.2rem"}
-                  fontWeight={"semibold"}
-                >
-                  About
-                </Text>
-              </Link>
-              <Link to={"/login"}>
-              <Button
-                _hover={{
-                  color: "#ff6733",
-                }}
-                width={"5rem"}
-                bg="white"
-                border={"1px solid black"}
-              >
-                Log In
-              </Button>
-              </Link>
+          <Link to={"/about"} >
+            <Text
+              _hover={{
+                color: "#ff6733",
+              }}
+              fontSize={"1.2rem"}
+              fontWeight={"semibold"}
+            >
+              About
+            </Text>
+          </Link>
+
             </VStack>
           </DrawerContent>
         </Drawer>

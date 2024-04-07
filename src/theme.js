@@ -18,7 +18,6 @@ const theme = extendTheme({
       },
     },
     
-    // You can customize other components in a similar way
   },
 
   styles: {

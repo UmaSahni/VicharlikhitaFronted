@@ -1,1 +1,1 @@
-export const baseUrl = `http://localhost:8080`
+export const baseUrl = `https://rc-wc0f.onrender.com`

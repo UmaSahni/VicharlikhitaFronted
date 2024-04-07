@@ -6,7 +6,6 @@ import { baseUrl } from '../Urls';
 import toast, { Toaster } from 'react-hot-toast';
 import { Authcontext } from '../Context/AuthContext';
 
-
 const LoginForm = () => {
   const [state, setState] = useState({email: "", pass:""})
   const [show, setShow] = useState(true)
@@ -22,7 +21,7 @@ const LoginForm = () => {
     e.preventDefault()
     toast.loading(<b>...Signing In</b>)
     axios.post(`${baseUrl}/user/login`, state).then((res)=>{
-      // console.log(res)
+      console.log(res)
       if(res.data.message == "User does exits. Please register"){
         toast.dismiss()
       toast(<b> ℹ️ User does exits. Please register</b>)
@@ -35,6 +34,10 @@ const LoginForm = () => {
       console.log(res.data)
      
       toast.success(<b>You're Signed In</b>)
+      }
+      else{
+        toast.dismiss()
+        toast.error(<b>Error occur</b>)
       }
       
     }).catch((err)=>{
